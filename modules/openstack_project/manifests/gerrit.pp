@@ -52,7 +52,7 @@ class openstack_project::gerrit (
   $github_oauth_token = '',
   $github_project_username = '',
   $github_project_password = '',
-  $gerrit_auth_type = '',
+  $gerrit_auth_type = 'OPENID_SSO',
   $ldap_server = '',
   $ldap_account_base = '',
   $ldap_username = '',
