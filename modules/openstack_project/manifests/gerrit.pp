@@ -473,22 +473,22 @@ class openstack_project::gerrit (
       require => Class['::gerrit']
     }
 
-    if ($testmode == false) {
-      exec { 'manage_projects':
-        command     => '/usr/local/bin/manage-projects -v -l /var/log/manage_projects.log',
-        timeout     => 1800, # 30 minutes
-        subscribe   => [
-            File['/home/gerrit2/projects.yaml'],
-            File['/home/gerrit2/acls'],
-          ],
-        refreshonly => true,
-        logoutput   => true,
-        require     => [
-            File['/home/gerrit2/projects.yaml'],
-            File['/home/gerrit2/acls'],
-            Class['jeepyb'],
-          ],
-      }
+    #if ($testmode == false) {
+    #  exec { 'manage_projects':
+    #    command     => '/usr/local/bin/manage-projects -v -l /var/log/manage_projects.log',
+    #    timeout     => 1800, # 30 minutes
+    #    subscribe   => [
+    #        File['/home/gerrit2/projects.yaml'],
+    #        File['/home/gerrit2/acls'],
+    #      ],
+    #    refreshonly => true,
+    #    logoutput   => true,
+    #    require     => [
+    #        File['/home/gerrit2/projects.yaml'],
+    #        File['/home/gerrit2/acls'],
+    #        Class['jeepyb'],
+    #      ],
+    #  }
 
       include logrotate
       logrotate::file { 'manage_projects.log':
